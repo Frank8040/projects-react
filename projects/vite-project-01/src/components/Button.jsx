@@ -1,0 +1,10 @@
+// eslint-disable-next-line react/prop-types
+const Button = ({ className, onClick, children }) => {
+    return (
+        <button className={className} onClick={onClick}>
+            {children}
+        </button>
+    )
+}
+
+export default Button
