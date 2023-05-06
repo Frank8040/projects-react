@@ -11,6 +11,7 @@ import {
   ResetGame,
   SectionGame,
   SectionTurn,
+  SubContainer,
   Title,
 } from "../styles/tictac";
 
@@ -65,22 +66,24 @@ function HomeMichi() {
 
   return (
     <Container>
-      <Title>Juego de Michi</Title>
-      <ResetGame onClick={resetGame}>Comenzar de nuevo</ResetGame>
-      <SectionGame>
-        {board.map((square, index) => {
-          return (
-            <Square key={index} index={index} updateBoard={updateBoard}>
-              {square}
-            </Square>
-          );
-        })}
-      </SectionGame>
-      <SectionTurn>
-        <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
-        <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
-      </SectionTurn>
-      <WinnerModal resetGame={resetGame} winner={winner} />
+      <SubContainer>
+        <Title>Juego de Michi</Title>
+        <ResetGame onClick={resetGame}>Comenzar de nuevo</ResetGame>
+        <SectionGame>
+          {board.map((square, index) => {
+            return (
+              <Square key={index} index={index} updateBoard={updateBoard}>
+                {square}
+              </Square>
+            );
+          })}
+        </SectionGame>
+        <SectionTurn>
+          <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
+          <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
+        </SectionTurn>
+        <WinnerModal resetGame={resetGame} winner={winner} />
+      </SubContainer>
     </Container>
   );
 }

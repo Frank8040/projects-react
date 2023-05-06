@@ -10,7 +10,7 @@ import HomeSearchMovie from '../src/pages/HomeSearchMovie'
 import styled from "styled-components";
 
 const Container = styled.div`
-  background-color: #7c7b7b;
+  background-color: gray;
   height: 100%;
 `;
 

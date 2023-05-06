@@ -3,8 +3,9 @@ import { useMovies } from '../hooks/useMovies.js'
 import { Movies } from '../components/Movies.jsx'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import debounce from 'just-debounce-it'
+import { Button, CheckBox, Container, Form, Header, Input, Main, SubContainer, Title } from '../styles/searchmovie'
 
-function useSearch () {
+function useSearch() {
   const [search, updateSearch] = useState('')
   const [error, setError] = useState(null)
   const isFirstInput = useRef(true)
@@ -36,7 +37,7 @@ function useSearch () {
   return { search, updateSearch, error }
 }
 
-function HomeSearchMovie () {
+function HomeSearchMovie() {
   const [sort, setSort] = useState(false)
 
   const { search, updateSearch, error } = useSearch()
@@ -67,29 +68,25 @@ function HomeSearchMovie () {
   }
 
   return (
-    <div className='page'>
-
-      <header>
-        <h1>Buscador de películas</h1>
-        <form className='form' onSubmit={handleSubmit}>
-          <input
-            style={{
-              border: '1px solid transparent',
-              borderColor: error ? 'red' : 'transparent'
-            }} onChange={handleChange} value={search} name='query' placeholder='Avengers, Star Wars, The Matrix...'
-          />
-          <input type='checkbox' onChange={handleSort} checked={sort} />
-          <button type='submit'>Buscar</button>
-        </form>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-      </header>
-
-      <main>
-        {
-          loading ? <p>Cargando...</p> : <Movies movies={movies} />
-        }
-      </main>
-    </div>
+    <Container>
+      <SubContainer>
+        <Header>
+          <Title>Buscador de películas</Title>
+          <Form onSubmit={handleSubmit}>
+            <Input onChange={handleChange} value={search} name='query' placeholder='Avengers, Star Wars, The Matrix...'
+            />
+            <CheckBox type='checkbox' onChange={handleSort} checked={sort} />
+            <Button type='submit'>Buscar</Button>
+          </Form>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+        </Header>
+        <Main>
+          {
+            loading ? <p>Cargando...</p> : <Movies movies={movies} />
+          }
+        </Main>
+      </SubContainer>
+    </Container>
   )
 }
 

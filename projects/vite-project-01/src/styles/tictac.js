@@ -1,11 +1,16 @@
 import styled from "styled-components";
 
-export const Container = styled.main`
+export const Container = styled.div`
+  background-color: gray;
+`;
+
+export const SubContainer = styled.main`
   display: grid;
   width: fit-content;
   margin: auto;
   text-align: center;
 `;
+
 export const Title = styled.h1`
   color: #eee;
   margin-top: 1px;
